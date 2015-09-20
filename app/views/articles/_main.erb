@@ -1,0 +1,7 @@
+<br>
+<%= link_to 'REFRESH', scraper_path, class:"btn btn-info btn-lg btn-block" %>
+<br>
+<br>
+<% @articles.each do |article| %>
+  <%= render partial: 'panel', locals: {article: article} %>
+<% end %>
