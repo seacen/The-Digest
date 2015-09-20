@@ -6,9 +6,8 @@ the session helper, homepage and panel template are credited by Mathew Blair.
 execute these commands to visit the website on [http://localhost:3000](http://localhost:3000)
 ```
 bundle install
-rake db:create
-rake db:seed
 rake db:migrate
+rake db:seed
 rails server
 ```
 
