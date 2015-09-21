@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
 	  	# Redirect to posts page
 	  	redirect_to articles_path
 	else
-		redirect_to :back
+		redirect_to :back, alert: 'wrong username or password, please try again'
 	end
   end
 

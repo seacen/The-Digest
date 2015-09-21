@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     if !curr_user
-      redirect_to login_path # , status: 401
+      redirect_to login_path, alert: 'please login'
     end
   end
 
