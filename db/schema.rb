@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20150916081910) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "articles", force: :cascade do |t|
     t.integer  "source_id"
     t.string   "title"
@@ -25,8 +28,8 @@ ActiveRecord::Schema.define(version: 20150916081910) do
     t.datetime "updated_at",          null: false
   end
 
-  add_index "articles", ["author_id"], name: "index_articles_on_author_id"
-  add_index "articles", ["source_id"], name: "index_articles_on_source_id"
+  add_index "articles", ["author_id"], name: "index_articles_on_author_id", using: :btree
+  add_index "articles", ["source_id"], name: "index_articles_on_source_id", using: :btree
 
   create_table "authors", force: :cascade do |t|
     t.string   "name"
@@ -50,15 +53,15 @@ ActiveRecord::Schema.define(version: 20150916081910) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string  "name"
     t.integer "taggings_count", default: 0
   end
 
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
@@ -71,4 +74,6 @@ ActiveRecord::Schema.define(version: 20150916081910) do
     t.datetime "updated_at",      null: false
   end
 
+  add_foreign_key "articles", "authors"
+  add_foreign_key "articles", "sources"
 end
