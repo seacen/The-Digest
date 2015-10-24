@@ -55,7 +55,14 @@
         <%= f.text_field :interest_list, class: 'form-control' %>
       </div>
 
-
+      <br>
+      <div class="checkbox">
+        <label>
+          <%= f.check_box :subscribed %> subscribed to digest
+        </label>
+      </div>
+      <br>
+      
       <div class="form-group">
         <%= f.submit 'Save', class: 'btn btn-default' %>
         <%= link_to 'Back', :back, class:"btn btn-default" %>
