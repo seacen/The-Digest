@@ -9,12 +9,16 @@
 # You are required to create subclasses of this class and in those
 # classes you are required to create the methods scrape and file_name
 #
+require_relative 'taggers/noun_tagger'
+require_relative 'taggers/section_tagger'
+require_relative 'taggers/tag_opencalais_tagger'
+require_relative 'taggers/topic_opencalais_tagger'
 
-
+# importer
 class Importer
   # A news scrape is initialised with the start and end date, it
   # then validates that the required methods are provided
-  def initialize start_date, end_date
+  def initialize(start_date, end_date)
     @start = start_date
     @end = end_date
   end
@@ -22,16 +26,10 @@ class Importer
   private
 
   def add_tags(article, section)
-    ActsAsTaggableOn.force_lowercase = true
-    if section.class == String
-      article.tag_list.add(section)
-    else
-      section.each { |sec| article.tag_list.add(sec) }
-    end
-    tgr = EngTagger.new
-    tagged = tgr.add_tags(article.title)
-    nouns = tgr.get_nouns(tagged).keys
-    nouns.each { |noun| article.tag_list.add(noun) }
+    SectionTagger.tag(article, section)
+    NounTagger.tag(article)
+    TagOpencalaisTagger.tag(article)
+    TopicOpencalaisTagger.tag(article)
     article.save
   end
 

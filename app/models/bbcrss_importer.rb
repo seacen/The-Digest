@@ -29,6 +29,7 @@ class BbcRssImporter < RssImporter
                         link: item.link,
                         date_of_publication: info[0])
 
+    return unless final.save
     add_tags(final, %w(politics bbc))
   end
 

@@ -52,7 +52,7 @@
 
       <div class="form-group">
         <%= f.label :interest_list %><br>
-        <%= f.text_field :interest_list, class: 'form-control' %>
+        <%= f.text_field :interest_list, value: @user.interest_list.join(", "), class: 'form-control' %>
       </div>
 
       <br>
@@ -62,7 +62,7 @@
         </label>
       </div>
       <br>
-      
+
       <div class="form-group">
         <%= f.submit 'Save', class: 'btn btn-default' %>
         <%= link_to 'Back', :back, class:"btn btn-default" %>

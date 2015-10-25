@@ -54,9 +54,15 @@ GEM
     debug_inspector (0.0.2)
     engtagger (0.2.0)
     erubis (2.7.0)
+    excon (0.45.4)
     execjs (2.6.0)
+    faraday (0.9.2)
+      multipart-post (>= 1.2, < 3)
+    faraday_middleware (0.10.0)
+      faraday (>= 0.7.4, < 0.10)
     globalid (0.3.6)
       activesupport (>= 4.1.0)
+    hashie (3.4.2)
     i18n (0.7.0)
     jbuilder (2.3.1)
       activesupport (>= 3.0.0, < 5)
@@ -74,8 +80,18 @@ GEM
     mini_portile (0.6.2)
     minitest (5.8.0)
     multi_json (1.11.2)
+    multi_xml (0.5.5)
+    multipart-post (2.0.0)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
+    open_calais (0.3.2)
+      activesupport
+      excon
+      faraday
+      faraday_middleware
+      hashie
+      multi_json
+      multi_xml
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -150,6 +166,7 @@ DEPENDENCIES
   engtagger
   jbuilder (~> 2.0)
   jquery-rails
+  open_calais
   rails (= 4.2.4)
   rails-html-sanitizer
   sass-rails (~> 5.0)

@@ -31,6 +31,7 @@ class HsRssImporter < RssImporter
                         image: info[1],
                         link: item.link,
                         date_of_publication: info[0])
+    return unless final.save
     add_tags(final, 'breaking')
   end
 

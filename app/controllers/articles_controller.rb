@@ -6,9 +6,10 @@ require_relative '../models/bbrss_importer'
 require_relative '../models/terss_importer'
 require_relative '../models/bbcrss_importer'
 require_relative '../models/search/search_engine'
+# ArticlesController
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show]
-  before_action :authenticate_user, only: [:create, :index, :show, :scrape, :interests]
+  before_action :authenticate_user
 
   # GET /articles
   # GET /articles.json
@@ -17,8 +18,9 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    engine = SearchEngine.new
-    @articles = engine.do_search(params[:q])
+    return redirect_to articles_path if params[:q].nil?
+
+    @articles = SearchEngine.do_search(params[:q])
     render 'index'
   end
 
@@ -38,8 +40,8 @@ class ArticlesController < ApplicationController
     importers << TaRssImporter.new(start_date, end_date)
     importers << HsRssImporter.new(start_date, end_date)
     importers << BbRssImporter.new(start_date, end_date)
-    importers << TeRssImporter.new(start_date, end_date)
-    importers << BbcRssImporter.new(start_date, end_date)
+    # importers << TeRssImporter.new(start_date, end_date)
+    # importers << BbcRssImporter.new(start_date, end_date)
 
     importers.each(&:scrape)
     redirect_to articles_path, notice: 'refresh complete!'

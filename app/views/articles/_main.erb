@@ -1,7 +1,7 @@
 <br>
 <%= form_tag("/articles/search", method: "get") do %>
   <div class="input-group">
-    <%= text_field_tag :q, nil, class: 'form-control', placeholder: 'Search for...' %>
+    <%= text_field_tag :q, nil, class: 'form-control', placeholder: 'Search keywords separated by comma' %>
     <span class="input-group-btn">
       <%= submit_tag("Search", class:"btn btn-info") %>
     </span>

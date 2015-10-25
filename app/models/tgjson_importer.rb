@@ -32,18 +32,8 @@ class TgJsonImporter < JsonImporter
                           date_of_publication: pub_date,
                           link: article['webUrl'],
                           source: Source.find_by(name: TgJsonImporter.source_name))
+      return unless final.save
       add_tags(final, 'australia')
-      # @articles << TgArticle.new(author: nil,
-      #                            title: article['webTitle'],
-      #                            summary: nil,
-      #                            images: nil,
-      #                            source: article['webUrl'],
-      #                            date: pub_date,
-      #                            type: article['type'],
-      #                            sectionId: article['sectionId'],
-      #                            id: article['id'],
-      #                            apiUrl: article['apiUrl'],
-      #                            sectionName: article['sectionName'])
     end
   end
 end

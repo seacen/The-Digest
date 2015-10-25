@@ -1,7 +1,7 @@
 # search engine
 class SearchEngine
-  def do_search(q)
-    qarray = q.split
+  def self.do_search(q)
+    qarray = q.split(',')
     articles = Article.all
     weighted_articles = []
 
@@ -15,7 +15,7 @@ class SearchEngine
     sort_and_clean(weighted_articles)
   end
 
-  def check_match(article, qarray)
+  def self.check_match(article, qarray)
     weights = 0
 
     qarray.each do |key|
@@ -33,7 +33,7 @@ class SearchEngine
   TITLE_W = 3
   DESC_W = 2
   SOURCE_W = 1
-  def calc_weight(key, article)
+  def self.calc_weight(key, article)
     weight = 0
 
     (weight += TAG_W) if article.tag_list.include?(key)
@@ -46,7 +46,7 @@ class SearchEngine
     weight
   end
 
-  def sort_and_clean(weighted_articles)
+  def self.sort_and_clean(weighted_articles)
     result = []
 
     date = Date.today

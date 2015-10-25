@@ -1,4 +1,3 @@
-require_relative '../models/tagger/space_parser'
 # user controller
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
@@ -16,7 +15,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    ActsAsTaggableOn.default_parser = SpaceParser
     @user = User.new(user_params)
     respond_to do |format|
       if @user.save
@@ -35,7 +33,6 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    ActsAsTaggableOn.default_parser = SpaceParser
     respond_to do |format|
       if @user.update(user_params)
         format.html do

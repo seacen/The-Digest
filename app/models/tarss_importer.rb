@@ -27,6 +27,7 @@ class TaRssImporter < RssImporter
                         summary: info[1],
                         image: nil,
                         link: item.link, date_of_publication: info[0])
+    return unless final.save
     add_tags(final, 'world')
   end
 
