@@ -5,6 +5,7 @@ require_relative '../models/hsrss_importer'
 require_relative '../models/bbrss_importer'
 require_relative '../models/terss_importer'
 require_relative '../models/bbcrss_importer'
+require_relative '../models/search/search_engine'
 class ArticlesController < ApplicationController
   before_action :set_article, only: [:show]
   before_action :authenticate_user, only: [:create, :index, :show, :scrape, :interests]
@@ -16,7 +17,8 @@ class ArticlesController < ApplicationController
   end
 
   def search
-    @articles = Article.tagged_with(curr_user.interest_list, any: true)
+    engine = SearchEngine.new
+    @articles = engine.do_search(params[:q])
     render 'index'
   end
 
