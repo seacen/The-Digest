@@ -2,7 +2,6 @@ require 'date'
 require_relative '../models/tgjson_importer'
 require_relative '../models/tarss_importer'
 require_relative '../models/hsrss_importer'
-require_relative '../models/bbrss_importer'
 require_relative '../models/tnjson_importer'
 require_relative '../models/search/search_engine'
 # ArticlesController
@@ -72,7 +71,7 @@ class ArticlesController < ApplicationController
     importers << TgJsonImporter.new(start_date, end_date)
     importers << TaRssImporter.new(start_date, end_date)
     importers << HsRssImporter.new(start_date, end_date)
-    importers << BbRssImporter.new(start_date, end_date)
+    # importers << BbRssImporter.new(start_date, end_date)
     importers << TnJsonImporter.new(start_date, end_date)
     # importers << TeRssImporter.new(start_date, end_date)
     # importers << BbcRssImporter.new(start_date, end_date)

@@ -21,5 +21,4 @@ rails server
 1. Herald Sun Breaking News
 2. The Age World News
 3. The Guardian Australia News
-4. Billboard.com Music News
-5. The New York Times Technology Top Stories
+4. The New York Times Technology Top Stories
