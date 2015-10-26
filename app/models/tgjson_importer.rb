@@ -32,7 +32,7 @@ class TgJsonImporter < JsonImporter
                           date_of_publication: pub_date,
                           link: article['webUrl'],
                           source: Source.find_by(name: TgJsonImporter.source_name))
-      return unless final.save
+      next unless final.save
       add_tags(final, 'australia')
     end
   end

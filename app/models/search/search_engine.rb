@@ -1,5 +1,6 @@
 # search engine
 class SearchEngine
+  # search article base by query
   def self.do_search(q)
     qarray = q.split(',')
     articles = Article.all
@@ -8,10 +9,12 @@ class SearchEngine
     qarray.each(&:downcase!)
 
     articles.each do |article|
+      # if article is matched to the query
       if (weighted_article = check_match(article, qarray))
         weighted_articles << weighted_article
       end
     end
+    # sort articles by weights and subsort by pubdate
     sort_and_clean(weighted_articles)
   end
 

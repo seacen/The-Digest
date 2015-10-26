@@ -1,0 +1,9 @@
+Hello, <%= @user.full_name %>
+
+Your News Digest
+
+<%= @articles.each do |article| %>
+  <%= article.title %>
+  <%= article.summary %>
+  <%= article.link %>
+<% end %>

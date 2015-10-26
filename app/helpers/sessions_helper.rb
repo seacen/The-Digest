@@ -10,9 +10,7 @@ module SessionsHelper
 
   # Return the currently logged in user for this session
   def curr_user
-    return if @curr_user
-
+    return @curr_user if @curr_user
     @curr_user = User.find_by(id: session[:user_id])
-    @curr_user
   end
 end

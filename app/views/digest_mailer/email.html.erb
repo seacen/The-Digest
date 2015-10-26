@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h3>Hello, <%= @user.full_name %></h3>
+    <br>
+    <h1>Your News Digest</h1>
+    <ul>
+      <% @articles.each do |article| %>
+        <li>
+          <h3><%= article.title %></h3>
+          <p><%= article.summary %></p>
+          <%= link_to 'read more', article.link %>
+        </li>
+      <% end %>
+    </ul>
+  </body>
+</html>

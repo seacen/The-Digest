@@ -18,6 +18,7 @@
           <li><%= link_to "Articles", articles_path %></li>
           <li><%= link_to 'Articles in Interests', interests_path %></li>
         </ul>
+        <%= link_to 'Send Digest', user_email_path, class: 'btn btn-default navbar-btn' %>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Welcome! #{curr_user.first_name}", edit_user_path(curr_user.id) %></li>
           <li><%= link_to "Edit Profile", edit_user_path(curr_user.id)%></li>

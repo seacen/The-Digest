@@ -8,16 +8,22 @@
 	  </div>
   </div>
   <div class="panel-footer">
-    <% if article.author %>
-      By <%=article.author.name %>,
-    <% end %>
-    <%= article.source.name %>
-    <% unless article.tag_list.empty? %>
-      <div class="pull-right">
-        <% article.tag_list.each do |tag| %>
-          <button type="button" class="btn btn-default btn-xs"><%= tag %></button>
+    <div class="row">
+      <div class="col-xs-5">
+        <% if article.author %>
+          By <%=article.author.name %>,
+        <% end %>
+        <%= article.source.name %>
+      </div>
+      <div class="col-xs-7">
+        <% unless article.tag_list.empty? %>
+          <% article.tag_list.each do |tag| %>
+            <div class="pull-right">
+              <button type="button" class="btn btn-default btn-xs"><%= tag %></button>&nbsp;
+            </div>
+          <% end %>
         <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>

@@ -6,8 +6,11 @@ Rails.application.routes.draw do
   post 'sessions/login', as: :signin
   delete 'sessions/logout', as: :logout
   get 'articles/scrape', as: :scraper
+  get 'admin/scrape', to: 'articles#scrape', as: :admin_scrape
   get 'articles/interests', to: 'articles#interests', as: :interests
   get 'articles/search', as: :search
+  get 'email', to: 'articles#user_email', as: :user_email
+  get 'admin/email', to: 'articles#admin_email', as: :admin_email
 
   resources :articles, only: [:create, :index, :show]
   resources :users, only: [:new, :create, :edit, :update, :destroy]
